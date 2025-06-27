@@ -24,5 +24,12 @@ Robotics team at [unity-robotics@unity3d.com](mailto:unity-robotics@unity3d.com)
 
 ## License
 [Apache License 2.0](LICENSE)# ros_tcp_communication
-# ros_tcp_communication
-# ros_tcp_communication
+# Some change to rostcp
+change the ROS_IP in endpoint.py to the right IP:
+
+`parameters=[{"ROS_IP": "192.170.10.1"}, {"ROS_TCP_PORT": 10000}]`
+
+I mannually add a message conveter to  convert the origin message from Quest3 to the right format.
+
+
+

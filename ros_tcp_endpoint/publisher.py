@@ -18,6 +18,7 @@ import re
 from rclpy.serialization import deserialize_message
 
 from .communication import RosSender
+from ros_tcp_endpoint.ros_msg_converter import convert_data
 
 
 class RosPublisher(RosSender):
@@ -37,6 +38,7 @@ class RosPublisher(RosSender):
         strippedTopic = re.sub("[^A-Za-z0-9_]+", "", topic)
         node_name = f"{strippedTopic}_RosPublisher"
         RosSender.__init__(self, node_name)
+        self.topic = topic  
         self.msg = message_class()
         self.pub = self.create_publisher(message_class, topic, queue_size)
 
@@ -54,7 +56,15 @@ class RosPublisher(RosSender):
         # message_type = type(self.msg)
         # message = deserialize_message(data, message_type)
 
-        self.pub.publish(data)
+        try:
+            msg = convert_data(self.topic, data)  
+            if msg:
+                print(f"[DEBUG] Publishing parsed message to {self.topic}")
+                self.pub.publish(msg)
+            else:
+                print(f"[WARNING] Could not convert data for topic {self.topic}")
+        except Exception as e:
+            print(f"[ERROR] Failed to process message for topic {self.topic}: {e}")
 
         return None
 

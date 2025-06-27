@@ -9,6 +9,7 @@ def generate_launch_description():
                 package="ros_tcp_endpoint",
                 executable="default_server_endpoint",
                 emulate_tty=True,
+                # parameters=[{"ROS_IP": "192.170.10.1"}, {"ROS_TCP_PORT": 10000}],
                 parameters=[{"ROS_IP": "192.170.10.1"}, {"ROS_TCP_PORT": 10000}],
             )
         ]

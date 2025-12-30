@@ -48,7 +48,7 @@ class TcpServer(Node):
         """
         super().__init__(node_name)
 
-        self.declare_parameter("ROS_IP", "192.170.10.1")
+        self.declare_parameter("ROS_IP", "0.0.0.0")
         self.declare_parameter("ROS_TCP_PORT", 10000)
 
         if tcp_ip:

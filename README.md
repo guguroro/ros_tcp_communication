@@ -3,11 +3,10 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Some changes to adapt to Quest2ROS2
-change the ROS_IP in endpoint.py to the right IP:
 
-`parameters=[{"ROS_IP": "192.170.10.1"}, {"ROS_TCP_PORT": 10000}]`
+- Added a message converter to convert the original message from the Quest 2/3 headset to the correct format.
 
-Added a message converter to convert the original message from the Quest 2/3 headset to the correct format.
+- Fixed JSON truncation caused by slicing decoded UTF-8 messages.
 
 ## Introduction
 
